@@ -1,0 +1,131 @@
+1. What is the default value of an Array for different data types?
+
+In Java, the default value of array elements depends on the data type of the array. Here are the default values for various types:
+
+For numeric types:
+int[] → 0
+float[] → 0.0f
+double[] → 0.0
+long[] → 0L
+For boolean types:
+boolean[] → false
+For reference types (objects, strings):
+String[], Object[], etc. → null
+Example:
+
+java
+Copy code
+int[] intArray = new int[5];  // Default values: [0, 0, 0, 0, 0]
+System.out.println(intArray[0]);  // Output: 0
+
+boolean[] boolArray = new boolean[3];  // Default values: [false, false, false]
+System.out.println(boolArray[0]);  // Output: false
+2. Can you pass a negative number in Array size?
+
+No, you cannot pass a negative number as the size of an array in Java. The size of an array must be a non-negative integer (i.e., zero or a positive number). If you try to initialize an array with a negative size, Java will throw a NegativeArraySizeException.
+
+Example:
+
+java
+Copy code
+int[] arr = new int[-5];  // Throws NegativeArraySizeException
+3. Where does an Array get stored in JVM memory?
+
+In Java, arrays are objects, and they are stored in the heap memory. When you create an array, the reference to the array is typically stored in the stack memory, but the actual elements of the array are stored in the heap.
+
+Array reference: Stored in stack memory.
+Array data (elements): Stored in heap memory.
+4. What are the disadvantages of an Array?
+
+While arrays are commonly used in Java, they do have some disadvantages:
+
+Fixed Size: Once an array is created, its size cannot be changed. If you need to resize an array, you must create a new one and copy the elements.
+Memory Inefficiency: Arrays allocate memory for a fixed number of elements, which can lead to memory wastage if the array is not fully used or require resizing if the array overflows.
+Limited Flexibility: Arrays can only hold elements of the same type, and their size is fixed once created.
+No Built-in Methods: Arrays lack built-in methods for operations such as searching, sorting, or modifying elements (you have to implement these manually).
+5. What is an Anonymous Array in Java? Give an example.
+
+An anonymous array in Java is an array that is declared and instantiated without explicitly assigning it a reference variable. It is typically used when you need to pass an array as an argument to a method or when creating temporary arrays.
+
+Example:
+
+java
+Copy code
+public class Main {
+    public static void main(String[] args) {
+        // Anonymous array being passed to a method
+        printArray(new int[]{1, 2, 3, 4, 5});
+    }
+    
+    public static void printArray(int[] arr) {
+        for (int num : arr) {
+            System.out.print(num + " ");
+        }
+    }
+}
+In this example, the array {1, 2, 3, 4, 5} is created as an anonymous array and passed directly to the printArray method.
+
+6. What are the different ways to traverse an Array in Java?
+
+There are several ways to traverse or iterate over an array in Java:
+
+Using a for loop:
+
+java
+Copy code
+int[] arr = {1, 2, 3, 4, 5};
+for (int i = 0; i < arr.length; i++) {
+    System.out.println(arr[i]);
+}
+Using an enhanced for loop (for-each loop):
+
+java
+Copy code
+int[] arr = {1, 2, 3, 4, 5};
+for (int num : arr) {
+    System.out.println(num);
+}
+Using Arrays.stream() (for advanced processing):
+
+java
+Copy code
+int[] arr = {1, 2, 3, 4, 5};
+Arrays.stream(arr).forEach(System.out::println);
+Using Iterator (for objects or collections): If the array is of object type (e.g., String[]), you can use an Iterator after converting the array into a list.
+
+java
+Copy code
+String[] arr = {"Java", "Python", "C++"};
+List<String> list = Arrays.asList(arr);
+Iterator<String> iterator = list.iterator();
+while (iterator.hasNext()) {
+    System.out.println(iterator.next());
+}
+7. What is the difference between length and length() method? Give Examples.
+
+The difference between length and length() in Java is as follows:
+
+length (for arrays):
+
+length is an attribute of an array, not a method. It returns the size of the array (i.e., the number of elements).
+No parentheses are used.
+Example:
+
+java
+Copy code
+int[] arr = {1, 2, 3, 4, 5};
+System.out.println(arr.length);  // Output: 5
+length() (for strings):
+
+length() is a method used for String objects. It returns the number of characters in the string.
+It is used with parentheses because it is a method.
+Example:
+
+java
+Copy code
+String str = "Hello";
+System.out.println(str.length());  // Output: 5
+In summary:
+
+length is for arrays, and it is used without parentheses.
+length() is for String objects, and it is a method, so it is used with parentheses.
